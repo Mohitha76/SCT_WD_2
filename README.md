@@ -26,7 +26,7 @@ A simple and interactive Stopwatch Web Application built using HTML, CSS, and Ja
 
 ## 🎯 Purpose of Project
 
-This project was created as a task assigned in my internship.
+This project was created as a part of my internship tasks.
 
 ## 📂 How to Run
 
