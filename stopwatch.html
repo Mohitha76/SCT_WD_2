@@ -1,0 +1,135 @@
+<html>
+  <head>
+    <style>
+      body{
+        border:5px solid black;
+        text-align:center;
+        background-color:rgba(200,200,0,0.2);
+      }
+      
+      h1{
+        color:black;
+        font-family:roboto;
+        display: inline-block;
+        border:1px solid black;
+        border-radius:45px;
+        padding:20px;
+        background-color:rgba(200,200,200,0.9);
+        margin-bottom:2px;
+      }
+     
+      h2{
+        color:white;
+        background-color:rgba(0,0,0,0.9);
+        padding:20px;
+        display: inline-block;
+        border:4px solid white;
+        font-size:50px;
+        margin-bottom:5px;
+      }
+      .class{
+      background-color:rgba(0,255,0,0.5);
+      font-family:magneto;
+      padding:18px;
+      border-radius:20px;
+      display: inline-block;
+      border:1px solid black;
+      }
+      .clas{
+      background-color:rgba(255,00,0,0.8);
+      font-family:magneto;
+      padding:18px;
+      border-radius:20px;
+      display: inline-block;
+      border:1px solid black;
+      }
+      .cla{
+      background-color:rgba(0,200,200,0.5);
+      font-family:magneto;
+      padding:18px;
+      border-radius:20px;
+      display: inline-block;
+      border:1px solid black;
+      }
+       h3:hover{
+        color:white;
+      }
+      .id{
+        background-color:rgba(150,100,90,0.9);
+        border:2px solid black;
+        font-size:30px;
+        padding:2px;
+        display: inline-block;
+      }
+      .col{
+        border:1px solid black;
+        background-color:orange;
+        font-size:20px;
+      }
+    </style>
+    <script>
+let seconds = 0;
+let minutes = 0;
+let hours = 0;
+let timer = null;
+
+function updateDisplay() {
+    let h = hours < 10 ? "0" + hours : hours;
+    let m = minutes < 10 ? "0" + minutes : minutes;
+    let s = seconds < 10 ? "0" + seconds : seconds;
+
+    document.getElementById("display").innerText = `${h}:${m}:${s}`;
+}
+
+function startTimer() {
+    if (timer !== null) return;
+
+    timer = setInterval(() => {
+        seconds++;
+        if (seconds == 60) {
+            seconds = 0;
+            minutes++;
+        }
+        if (minutes == 60) {
+            minutes = 0;
+            hours++;
+        }
+        updateDisplay();
+    }, 1000);
+}
+
+function stopTimer() {
+    clearInterval(timer);
+    timer = null;
+}
+
+function resetTimer() {
+    stopTimer();
+    seconds = 0;
+    minutes = 0;
+    hours = 0;
+    updateDisplay();
+}
+function lapTimer() {
+    let lapTime = document.getElementById("display").innerText;
+    let li = document.createElement("li");
+    li.innerText = lapTime;
+    document.getElementById("laps").appendChild(li);
+}
+</script>
+    </head>
+      
+  <body>
+    <h1 ><b><center>&nbsp&nbspSTOP WATCH&nbsp&nbsp</center></b></h1><br>
+    <h2 id="display"><b>00:00:00</b></h2><br>
+    <h3 class="class" onclick="startTimer()">Start</h3>  &nbsp
+    <h3 class="cla" onclick="resetTimer()">Reset</h3>  &nbsp
+    <h3 class="clas" onclick="stopTimer()">Stop</h3><br>
+  
+    <button onclick="lapTimer()" class="col">Lap</button><br>
+    
+    <ul id="laps" class="id"></ul><br><br>
+  
+    
+  </body>
+</html>
